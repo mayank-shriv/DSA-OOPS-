@@ -1,6 +1,14 @@
 # Merge Sort 
-
-def mergeSort(list1, list2):
+def mergeSort(arr):
+    if len(arr)<=1:
+        return arr
+    mid = len(arr)//2
+    leftArray = arr[:mid]
+    rightArray = arr[mid:]
+    left = mergeSort(leftArray)
+    right = mergeSort(rightArray)
+    return merge(left,right)
+def merge(list1, list2):
     p,q = 0,0
     n,m = len(list1), len(list2)
     result = []
@@ -17,8 +25,7 @@ def mergeSort(list1, list2):
     while q<m:
         result.append(list2[q])
         q+=1
-    print(result)
+    return result
 
-list1 = [12,23,435,456,5657,43435]
-list2 = [1,2,3,4,5,6,6,87,899]
-mergeSort(list1,list2)
+list1 = [12,23,435,456,5657,43435,102,213,1,1,2,312,1231,2312]
+print(mergeSort(list1))
